@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 // Risk Assessment Entity. These are the exact objects which will be stored in our MongoDB Document.
 @Document
 public class RiskAssessment {
-    @Id
     private String id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -16,13 +15,33 @@ public class RiskAssessment {
     private String title;
     private String questions;
 
-    public RiskAssessment(String assignee, String title, String questions) {
+    public RiskAssessment(String id, LocalDateTime createdAt, LocalDateTime updatedAt, String assignee, String title, String questions) {
+        this.id = id;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.assignee = assignee;
         this.title = title;
         this.questions = questions;
-        LocalDateTime currentTime = LocalDateTime.now();
-        this.createdAt = currentTime;
-        this.updatedAt = currentTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
     public String getAssignee() {
